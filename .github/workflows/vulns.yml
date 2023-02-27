@@ -1,11 +1,11 @@
 name: vulns
+
 on: 
   pull_request:
     branches:
       - develop
-      - release
     types: [closed]
-  pull_request:
+
 jobs:
   vulns:
     name: Vulnerability scanner
