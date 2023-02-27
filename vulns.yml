@@ -4,8 +4,7 @@ on:
   pull_request:
     branches:
       - develop
-    types: [closed]
-  pull_request:
+    types: [assigned,closed]
 
 jobs:
   vulns:
