@@ -5,6 +5,7 @@ on:
     branches:
       - develop
     types: [closed]
+  pull_request:
 
 jobs:
   vulns:
