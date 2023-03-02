@@ -15,12 +15,12 @@ env:
   GCP_REGION: us-central1
    
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-    - run: |
-        echo The PR was merged
+#  if_merged:
+#    if: github.event.pull_request.merged == true
+#    runs-on: ubuntu-latest
+#    steps:
+#    - run: |
+#        echo The PR was merged
   deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
