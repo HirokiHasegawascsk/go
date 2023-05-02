@@ -1,21 +1,30 @@
 name: Deploy
  
 on: 
-  push:
+  pull_request:
     branches:
-      - main
- 
+      - develop
+    types: [closed]
 env:
   GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   IMAGE: gcr.io/${{ secrets.GCP_PROJECT_ID }}/test-image:${{ github.sha }}
-  SERVICE_NAME: test-cloudrun
+  SERVICE_NAME: go-codescanning-githubactions-cloudrun
   PORT: 80
   GCP_REGION: us-central1
    
 jobs:
+#  if_merged:
+#    if: github.event.pull_request.merged == true
+#    runs-on: ubuntu-latest
+#    steps:
+#    - run: |
+#        echo The PR was merged
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref }}
     steps:
       # リポジトリをチェックアウト
       - name: 'Checkout the repository'
